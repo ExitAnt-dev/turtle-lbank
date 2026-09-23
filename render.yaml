@@ -1,0 +1,28 @@
+# Public Blueprint template for ExitAnt-dev/turtle-lbank.
+# Do not publish a customer image until tools/check_deployment.py passes.
+services:
+  - type: worker
+    name: exitant-lbank-turtle
+    runtime: image
+    plan: starter
+    region: oregon
+    numInstances: 1
+    image:
+      url: docker.io/exitant/exitant-lbank-turtle:latest
+    disk:
+      name: lbank-state
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: API_KEY
+        sync: false
+      - key: SECRET_KEY
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
+      - key: LBANK_MODE
+        value: paper
+      - key: LBANK_STATE_PATH
+        value: /data/lbank-state.db
