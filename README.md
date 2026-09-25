@@ -35,6 +35,10 @@ https://render.com/deploy?repo=https://github.com/ExitAnt-dev/turtle-lbank
 - **Futures API key** with trading permission. LBank has no API passphrase.
 - **Hedge (two-way) position mode** enabled in LBank Futures. The bot refuses to
   start in one-way mode.
+- If the API key has **IP restriction** enabled, whitelist your Render service's outbound IP addresses
+  (Render → the service → Settings → Outbound IP addresses) or disable the restriction. Otherwise LBank rejects
+  the bot's calls with error `10022`. On every start the bot checks the key and, if rejected, tells you the server's
+  current IP to whitelist.
 - USDT in your LBank **futures** account. The bot moves profit reserves between your
   own futures and spot accounts; it never withdraws.
 
